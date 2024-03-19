@@ -48,11 +48,12 @@
   <lib desc="#Arithmetic" name="3"/>
   <lib desc="#Memory" name="4"/>
   <lib desc="#I/O" name="5"/>
-  <lib desc="#Base" name="6">
-    <tool name="Text Tool">
-      <a name="font" val="SansSerif plain 12"/>
-    </tool>
-  </lib>
+  <lib desc="#Base" name="6"/>
+  <lib desc="#TTL" name="7"/>
+  <lib desc="#TCL" name="8"/>
+  <lib desc="#BFH-Praktika" name="9"/>
+  <lib desc="#Input/Output-Extra" name="10"/>
+  <lib desc="#Soc" name="11"/>
   <main name="main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -60,102 +61,119 @@
     <a name="simrand" val="0"/>
   </options>
   <mappings>
-    <tool lib="6" map="Button2" name="Menu Tool"/>
+    <tool lib="6" map="Button2" name="Poke Tool"/>
     <tool lib="6" map="Button3" name="Menu Tool"/>
     <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
   </mappings>
   <toolbar>
     <tool lib="6" name="Poke Tool"/>
     <tool lib="6" name="Edit Tool"/>
-    <tool lib="6" name="Text Tool">
-      <a name="font" val="SansSerif plain 12"/>
-    </tool>
+    <tool lib="6" name="Wiring Tool"/>
+    <tool lib="6" name="Text Tool"/>
     <sep/>
     <tool lib="0" name="Pin"/>
     <tool lib="0" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
     </tool>
+    <sep/>
     <tool lib="1" name="NOT Gate"/>
     <tool lib="1" name="AND Gate"/>
     <tool lib="1" name="OR Gate"/>
+    <tool lib="1" name="XOR Gate"/>
+    <tool lib="1" name="NAND Gate"/>
+    <tool lib="1" name="NOR Gate"/>
+    <sep/>
+    <tool lib="4" name="D Flip-Flop"/>
+    <tool lib="4" name="Register"/>
   </toolbar>
   <circuit name="main">
-    <a name="appearance" val="custom"/>
+    <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="main"/>
-    <a name="clabelfont" val="SansSerif plain 12"/>
     <a name="simulationFrequency" val="1.0"/>
     <appear>
       <path d="M61,51 Q65,61 69,51" fill="none" stroke="#808080" stroke-width="2"/>
       <rect fill="none" height="68" stroke="#000000" stroke-width="2" width="125" x="50" y="50"/>
       <circ-anchor facing="east" x="80" y="50"/>
-      <circ-port dir="in" pin="880,260" x="60" y="120"/>
+      <circ-port dir="in" pin="900,270" x="60" y="120"/>
       <circ-port dir="out" pin="590,230" x="70" y="120"/>
     </appear>
-    <comp lib="0" loc="(320,280)" name="Clock"/>
+    <comp lib="0" loc="(340,460)" name="Clock"/>
     <comp lib="0" loc="(590,230)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="facing" val="south"/>
       <a name="output" val="true"/>
       <a name="width" val="8"/>
     </comp>
-    <comp lib="0" loc="(880,260)" name="Pin">
+    <comp lib="0" loc="(900,270)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="south"/>
+      <a name="label" val="INSTRUCTION"/>
+      <a name="labelfont" val="Source Code Pro Light bold 16"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(930,330)" name="Splitter">
-      <a name="bit1" val="0"/>
-      <a name="bit10" val="0"/>
-      <a name="bit11" val="0"/>
-      <a name="bit12" val="0"/>
-      <a name="bit13" val="0"/>
-      <a name="bit14" val="0"/>
-      <a name="bit15" val="0"/>
+    <comp lib="0" loc="(970,340)" name="Splitter">
+      <a name="bit0" val="none"/>
+      <a name="bit1" val="none"/>
+      <a name="bit10" val="none"/>
+      <a name="bit11" val="none"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
       <a name="bit16" val="0"/>
       <a name="bit17" val="0"/>
       <a name="bit18" val="0"/>
       <a name="bit19" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit20" val="0"/>
-      <a name="bit21" val="0"/>
-      <a name="bit22" val="0"/>
-      <a name="bit23" val="0"/>
-      <a name="bit24" val="0"/>
-      <a name="bit25" val="0"/>
-      <a name="bit26" val="0"/>
-      <a name="bit27" val="0"/>
-      <a name="bit28" val="0"/>
-      <a name="bit29" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit30" val="0"/>
-      <a name="bit31" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="0"/>
-      <a name="bit6" val="0"/>
-      <a name="bit7" val="0"/>
-      <a name="bit8" val="0"/>
-      <a name="bit9" val="0"/>
-      <a name="fanout" val="1"/>
+      <a name="bit2" val="none"/>
+      <a name="bit20" val="1"/>
+      <a name="bit21" val="1"/>
+      <a name="bit22" val="1"/>
+      <a name="bit23" val="1"/>
+      <a name="bit24" val="2"/>
+      <a name="bit25" val="2"/>
+      <a name="bit26" val="2"/>
+      <a name="bit27" val="2"/>
+      <a name="bit28" val="3"/>
+      <a name="bit29" val="3"/>
+      <a name="bit3" val="none"/>
+      <a name="bit30" val="3"/>
+      <a name="bit31" val="3"/>
+      <a name="bit4" val="none"/>
+      <a name="bit5" val="none"/>
+      <a name="bit6" val="none"/>
+      <a name="bit7" val="none"/>
+      <a name="bit8" val="none"/>
+      <a name="bit9" val="none"/>
+      <a name="fanout" val="4"/>
       <a name="incoming" val="32"/>
+      <a name="spacing" val="4"/>
     </comp>
-    <comp lib="4" loc="(610,270)" name="ROM">
+    <comp lib="4" loc="(610,280)" name="ROM">
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 8 32
 0
 </a>
       <a name="dataWidth" val="32"/>
     </comp>
-    <comp lib="5" loc="(320,300)" name="Button"/>
-    <comp loc="(580,280)" name="PC"/>
-    <wire from="(320,280)" to="(360,280)"/>
-    <wire from="(320,300)" to="(360,300)"/>
-    <wire from="(580,280)" to="(590,280)"/>
-    <wire from="(590,230)" to="(590,280)"/>
-    <wire from="(590,280)" to="(610,280)"/>
-    <wire from="(850,330)" to="(880,330)"/>
-    <wire from="(880,260)" to="(880,330)"/>
-    <wire from="(880,330)" to="(930,330)"/>
+    <comp lib="5" loc="(340,480)" name="Button"/>
+    <comp loc="(590,370)" name="PC"/>
+    <wire from="(340,460)" to="(350,460)"/>
+    <wire from="(340,480)" to="(360,480)"/>
+    <wire from="(350,370)" to="(350,460)"/>
+    <wire from="(350,370)" to="(370,370)"/>
+    <wire from="(360,390)" to="(360,480)"/>
+    <wire from="(360,390)" to="(370,390)"/>
+    <wire from="(590,230)" to="(590,290)"/>
+    <wire from="(590,290)" to="(590,370)"/>
+    <wire from="(590,290)" to="(610,290)"/>
+    <wire from="(850,340)" to="(900,340)"/>
+    <wire from="(900,270)" to="(900,340)"/>
+    <wire from="(900,340)" to="(970,340)"/>
+    <wire from="(990,210)" to="(1130,210)"/>
+    <wire from="(990,250)" to="(1130,250)"/>
+    <wire from="(990,290)" to="(1130,290)"/>
+    <wire from="(990,330)" to="(1130,330)"/>
   </circuit>
   <circuit name="ALU">
     <a name="circuit" val="ALU"/>
