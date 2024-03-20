@@ -175,9 +175,10 @@
     <wire from="(990,290)" to="(1130,290)"/>
     <wire from="(990,330)" to="(1130,330)"/>
   </circuit>
-  <circuit name="ALU">
-    <a name="circuit" val="ALU"/>
+  <circuit name="ULA">
+    <a name="circuit" val="ULA"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <a name="simulationFrequency" val="1.0"/>
   </circuit>
   <circuit name="PC">
     <a name="appearance" val="logisim_evolution"/>
