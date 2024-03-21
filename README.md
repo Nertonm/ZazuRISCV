@@ -3,7 +3,8 @@ Setting Things Up
 ## OPCODES
   - 001 : ADDIU
   - 010 : SLL
-  - 011 : SW
-  - 100 : LW
-  - 101 : JR
-  - 110 : NOP
+  - 011 : MUL
+  - 100 : SW
+  - 101 : LW
+  - 110 : JR
+  - 111 : NOP
