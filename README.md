@@ -7,10 +7,14 @@ Setting Things Up
 23-27 RD dest 
 28-31 opcode
 
-  - 001 : ADDIU
-  - 010 : SLL
-  - 011 : MUL
-  - 100 : SW
-  - 101 : LW
-  - 110 : JR
-  - 111 : NOP
+  - 0000 : sll
+  - 0001 : sra
+  - 0010 : slr
+  - 0011 : MUL
+  - 0100 :  
+  - 0101 : add
+  - 0110 : sub
+  - 0111 : and
+  - 0001 : or
+  - 0010 : xor 
+  - 0011 : nor
