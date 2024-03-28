@@ -8,7 +8,6 @@
 .eqv	count_k,  $v1
 
 	mulmatrix:
-	save_context
 	li count_i, 0
   	begin_for_i_it:						# for (int i = 0; i < SIZE; ++i) {
   		bge count_i, 4, end_for_i_it 
@@ -36,8 +35,8 @@
   				add 	$a0, row, col
   				add 	$a0, $a0, $s0
   				lw 	$t1, 0($t0)		
- 				mul   	$t10, $t8, $t9         	# Multiply elements
-    				add   	$t2, $t2, $t10        	# Accumulate product
+ 				mul   	$t9, $t8, $t9         	# Multiply elements
+    				add   	$t2, $t2, $t9        	# Accumulate product
 				addi 	count_k, count_k, 1     	# k++
   				addi 	count_j ,count_j ,1        # count_j++
   					end_for_k_it:
@@ -50,5 +49,4 @@ end_for_j_it:
   	count:
   		move 	$v0, $zero
   	end_for_i_it:	# Complete all loops
-  		restore_context
   		jr $ra 
