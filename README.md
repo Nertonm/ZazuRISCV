@@ -8,10 +8,9 @@ Setting Things Up
  - 28-31 opcode
 
   - 0000 : sll
-  - 0001 : sra
   - 0010 : slr
   - 0011 : MUL
-  - 0100 :  
+  - 0100 : EQU 
   - 0101 : add
   - 0110 : sub
   - 0111 : and
