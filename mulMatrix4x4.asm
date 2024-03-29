@@ -1,52 +1,222 @@
-# 4x4 matrix
-.eqv 	row $t0 
-.eqv 	col $t1
-.eqv 	auxrow $t3
-.eqv 	auxcol $t4
-.eqv 	count_i, $t4
-.eqv 	count_j, $t5
-.eqv	count_k,  $v1
+.data
+  msg_newline: 	.asciiz "\n"
+  msg_space:	.asciiz " "
 
-	mulmatrix:
-	li count_i, 0
-  	begin_for_i_it:						# for (int i = 0; i < SIZE; ++i) {
-  		bge count_i, 4, end_for_i_it 
-    		move $v0, $zero  				# Clear result accumulator
-  		li count_j, 0 					# j = 0
-  		begin_for_j_it:					# for (int j = 0; j < SIZE; ++j) {
-  			bge count_j, 4, end_for_j_it 		# loop check
-   			move $t2, $zero
-  		   	move $t3, $zero
-			    					# Loop to calculate dot product for each element in resulting matrix
-    			li count_k, 0        			# k = 0 (loop counter for inner loop)
-				begin_for_k_it:
-    				bge count_k, 4, end_for_k_it
-			   	sll   	row, count_i, 5    	# $t0 = i * 4 (offset for row i in matrix A)
-			    	sll   	col, count_j , 2    	# $t1 = j * 1 (offset for col j in matrix B)
-			   	add   	$a0, row, col       	# $a0 = address of element (i, j) in result matrix (C)
-			    	sll   	$t4, count_k, 5     	# $t4 = k * 4 (offset for element k in row i of matrix A)
-			    	add   	$t5, row, $t4        	# $t5 = address of element (i, k) in matrix A
-			    	sll   	$t6, count_k , 2     	# $t6 = k * 1 (offset for element k in col j of matrix B)
-			   	add   	$t7, $s1, $t6        	# $t7 = address of element (k, j) in matrix B
-			    	lw   	$t8, 0($t5)           	# Load element (i, k) from matrix A
-			    	lw   	$t9, 0($t7)           	# Load element (k, j) from matrix B
-  				sll 	$t0, count_i,  5 	
-  				sll 	$t1, count_j , 2 		
-  				add 	$a0, row, col
-  				add 	$a0, $a0, $s0
-  				lw 	$t1, 0($t0)		
- 				mul   	$t9, $t8, $t9         	# Multiply elements
-    				add   	$t2, $t2, $t9        	# Accumulate product
-				addi 	count_k, count_k, 1     	# k++
-  				addi 	count_j ,count_j ,1        # count_j++
-  					end_for_k_it:
-    					sw   $t2, 0($a0)        # Store result (i, j) in matrix C
-    					addi count_j ,count_j ,1     # count_j++
-  					j begin_for_j_it  	
-end_for_j_it:
-  		addi count_i, count_i, 1
-  		j begin_for_i_it
-  	count:
-  		move 	$v0, $zero
-  	end_for_i_it:	# Complete all loops
-  		jr $ra 
+.globl main
+.text
+
+main:
+  addi $sp, $sp, -64
+  move $s0, $sp
+  
+  addi $sp, $sp, -64
+  move $s1, $sp
+
+  addi $sp, $sp, -64
+  move $s2, $sp
+  
+  li $s3, 0
+  begin_for_i:
+    beq $s3, 4, end_i
+    
+    li $s4, 0
+    begin_for_j:
+      beq $s4, 4, end_j
+      
+      sll $t0, $s3, 5
+      sll $t1, $s4, 2
+      add $t0, $t0, $t1
+      add $t0, $t0, $s0
+      
+      add $t2, $s3, $s4
+      sw $t2, 0 ($t0)
+      
+      addi $s4, $s4, 1
+      j begin_for_j
+    end_j:
+      addi $s3, $s3, 1
+      j begin_for_i
+  end_i:
+  
+  li $s3, 0
+  begin_for_i2:
+    beq $s3, 4, end_i2
+    
+    li $s4, 0
+    begin_for_j2:
+      beq $s4, 4, end_j2
+      
+      sll $t0, $s3, 5
+      sll $t1, $s4, 2
+      add $t0, $t0, $t1
+      add $t0, $t0, $s2
+      
+      add $t2, $s3, $s4
+      addi $t2, $t2, 3
+      
+      sw $t2, 0 ($t0)
+      
+      addi $s4, $s4, 1
+      j begin_for_j2
+    end_j2:
+      addi $s3, $s3, 1
+      j begin_for_i2
+  end_i2:
+  
+  li $s3, 0 # i = 0
+  begin_for_i_iteration:
+    beq $s3, 4, end_for_i_iteration
+    
+    li $s4, 0 # j = 0
+    begin_for_j_iteration:
+      beq $s4, 4, end_for_j_iteration 
+      
+      sll $t0, $s3, 5
+      sll $t1, $s4, 2
+      add $t0, $t0, $t1
+      add $t0, $t0, $s0
+      lw $t2, 0 ($t0)
+      
+      li $v0, 1
+      move $a0, $t2
+      syscall
+      
+      li $v0, 4
+      la $a0, msg_space
+      syscall
+   
+      addi $s4, $s4, 1
+      j begin_for_j_iteration
+    end_for_j_iteration:
+      li $v0, 4
+      la $a0, msg_newline
+      syscall
+      
+      addi $s3, $s3, 1
+      j begin_for_i_iteration
+  end_for_i_iteration:
+  
+  li $v0, 4
+  la $a0, msg_newline
+  syscall
+  
+  li $s3, 0 # i = 0
+  begin_for_i_iteration2:
+    beq $s3, 4, end_for_i_iteration2
+    
+    li $s4, 0 # j = 0
+    begin_for_j_iteration2:
+      beq $s4, 4, end_for_j_iteration2
+      
+      sll $t0, $s3, 5
+      sll $t1, $s4, 2
+      add $t0, $t0, $t1
+      add $t0, $t0, $s1
+      
+      lw $t2, -64 ($t0)
+      
+      li $v0, 1
+      move $a0, $t2
+      syscall
+      
+      li $v0, 4
+      la $a0, msg_space
+      syscall
+      
+      addi $s4, $s4, 1
+      j begin_for_j_iteration2
+    end_for_j_iteration2:
+      li $v0, 4
+      la $a0, msg_newline
+      syscall
+      
+      addi $s3, $s3, 1
+      j begin_for_i_iteration2
+  end_for_i_iteration2:
+  
+  
+  li $v0, 4
+  la $a0, msg_newline
+  syscall
+  
+  li $s3, 0
+  begin_mult_i:
+    beq $s3, 4, end_mult_i
+    
+    li $s4, 0
+    begin_mult_j:
+      beq $s4, 4, end_mult_j
+      
+      li $t5, 0
+      li $s5, 0
+      begin_mult_k:
+        beq $s5, 4, end_mult_k
+        
+        sll $t0, $s3, 5
+        sll $t1, $s5, 2
+        add $t0, $t0, $t1
+        add $t0, $t0, $s0
+        
+        lw $t2, 0 ($t0)
+        
+        sll $t0, $s5, 5
+        sll $t1, $s4, 2
+        add $t0, $t0, $t1
+        add $t0, $t0, $s1
+        
+        lw $t3, -64 ($t0)
+        
+        mul $t3, $t3, $t2
+        add $t5, $t5, $t3
+        
+        addi $s5, $s5, 1
+        j begin_mult_k
+      end_mult_k:
+        
+        sll $t6, $s3, 5
+        sll $t7, $s4, 2
+        add $t6, $t6, $t7
+        add $t6, $t6, $s2
+        
+        sw $t5, -128 ($t6)
+      
+        addi $s4, $s4, 1
+        j begin_mult_j
+    end_mult_j:
+      addi $s3, $s3, 1
+      j begin_mult_i
+  end_mult_i:
+  
+  li $s3, 0 # i = 0
+  begin_for_i_iteration3:
+    beq $s3, 4, end_for_i_iteration3
+    
+    li $s4, 0 # j = 0
+    begin_for_j_iteration3:
+      beq $s4, 4, end_for_j_iteration3
+      
+      sll $t0, $s3, 5
+      sll $t1, $s4, 2
+      add $t0, $t0, $t1
+      add $t0, $t0, $s2
+      
+      lw $t2, -128 ($t0)
+      
+      li $v0, 1
+      move $a0, $t2
+      syscall
+      
+      li $v0, 4
+      la $a0, msg_space
+      syscall
+      
+      addi $s4, $s4, 1
+      j begin_for_j_iteration3
+    end_for_j_iteration3:
+      li $v0, 4
+      la $a0, msg_newline
+      syscall
+      
+      addi $s3, $s3, 1
+      j begin_for_i_iteration3
+  end_for_i_iteration3:
