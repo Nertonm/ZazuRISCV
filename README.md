@@ -5,7 +5,7 @@
  - 18-22 RS entry 2
  - 23-27 RD dest 
  - 28-31 opcode
-
+   V0 = Reg$3
    Escreve Um 
    Le Dois
    OP RD RT RS
@@ -22,10 +22,10 @@
   - 0110 : OR
   - 0111 : XOR
   - 1000 : LES
-  - 1001 : MulMatrix4x4Turbo
+  - 1001 : TurboLi
   - 1010 : JMP
   - 1011 : B
-  - 1100 :
+  - 1100 : MulMatrix4x4
   - 1101 : LI
   - 1110 : SW
   - 1111 : LW
