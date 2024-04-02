@@ -2,7 +2,6 @@
 Setting Things Up
 ## OPCODES
 
-
  - 17-13 RT entry 1
  - 18-22 RS entry 2
  - 23-27 RD dest 
