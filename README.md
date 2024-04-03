@@ -1,10 +1,10 @@
 # Zazu MIPS-like
 
 ## Ordem de Leitura
- - 17-13 RT entry 1
- - 18-22 RS entry 2
- - 23-27 RD dest 
- - 28-31 opcode
+ - RT entry 1
+ - RS entry 2
+ - RD dest 
+ - opcode
 
    V0 = Reg$3
    Escreve Um - Lê Dois
@@ -37,5 +37,5 @@
 Elemento por elemento, multiplicação por multiplicação, utiliza muitas instruções e tempo.
 
 ### Modo Turbo
-Inves de Alocar por partes a memória e gastar diversos ciclos do processador com alocação e carregamento. Zazuutiliza o Li turbo para carregar nos registradores a matrix de maneira rapida. Depois utiliza a instrução de multiplicar matrix,  o opcode de MulMul4x4, que faz o processador interpretar a matriz porlotes e executar a multiplicação de matriz em apenas quatro instancias.
+Inves de Alocar por partes a memória e gastar diversos ciclos do processador com alocação e carregamento. Zazu utiliza o Li turbo para carregar nos registradores a matrix de maneira rapida. Depois utiliza a instrução de multiplicar matrix,  o opcode de MulMul4x4, que faz o processador interpretar a matriz porlotes e executar a multiplicação de forma acelerada.
 
