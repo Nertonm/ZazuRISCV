@@ -1,15 +1,18 @@
-# MIPS-like
+# Zazu MIPS-like
 
 ## Ordem de Leitura
  - 17-13 RT entry 1
  - 18-22 RS entry 2
  - 23-27 RD dest 
  - 28-31 opcode
-   //V0 = Reg$3
-   //Escreve Um - Lê Dois
+
+   V0 = Reg$3
+   Escreve Um - Lê Dois
+ 
+   Ordem    
    OP RD RT RS
-   //Manipulação de Endereço sempre por RS
-   //Para Pular os Bits Desperdiçados 1aa
+
+   Manipulação de Endereço sempre por RD
 
 ## OPCODES
   - 0000 : sll
@@ -29,8 +32,7 @@
   - 1110 : SW
   - 1111 : LW
 
-    A0 = REG5
-## Como o MulMatrix4x4 no ZazuIPS:
+## MulMatrix4x4 no ZazuIPS:
 ### Inserção Lenta
 Elemento por elemento, multiplicação por multiplicação, utiliza muitas instruções e tempo.
 
