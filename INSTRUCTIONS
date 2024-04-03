@@ -1,3 +1,41 @@
-v2.0 raw
 
-9ffff1aa
+Li Turbo Matrix   Move     Li Turbo Matrix   Move     MulMatrixSw
+9FFFFFFF 12342233 bf0fa111 9FFFFFFF 12342233 bff1a111 c0fdf1aa
+9FFFFFFF 32145211 bf0fa111 9FFFFFFF 12342233 bff1a111 c1fdf1aa
+
+
+//Study
+** Turbo Li
+OP
+9  NULL
+
+Input First two rows
+1 i1j1  1 i2j1  1 i3j1  1 i4j1 1 i1j1  1 i2j1  1 i3j1  1 i4j1
+12 34 22 3
+
+**Passando Para Registrador
+Move Rd Rt
+b    01 2/2 a1 111
+
+
+** Load Imediate First Row of Matrix two to Register
+OP 2 i1j1  2 i2j1  2 i3j1  2 i4j1
+9
+
+Input First two rows
+1 i1j1  1 i2j1  1 i3j1  1 i4j1 1 i1j1  1 i2j1  1 i3j1  1 i4j1
+12 34 22 3
+
+**Passando Para Registrador
+Move Rd Rt
+b    01 3/3 a1 111
+
+Multiplica e Guarda
+b000123a1111
+
+** Multiply the Rows and Store the first Section of Matrix
+Move Dest  NULL Ini
+1010 a     FFFF 3
+
+9020A1A4 01020304 b33a1111 ba39a111
+1100 0000 0111 0000 1100 000 0000
