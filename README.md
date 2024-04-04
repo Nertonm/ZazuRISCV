@@ -50,11 +50,14 @@ Projeto requer Logisim Evolution para ser executado.
  - RS entry 2
  - RD dest 
  - opcode
+   
    V0 = Reg$3
+   
    Escreve Um - Lê Dois
-   Ordem    
-   OP RD RT RS
+   
+   Ordem    OP RD RT RS
    Manipulação de Endereço sempre por RD
+   
 #### OPCODES
   - 0000 : sll
   - 0001 : slr
@@ -65,7 +68,7 @@ Projeto requer Logisim Evolution para ser executado.
   - 0110 : OR
   - 0111 : XOR
   - 1000 : LES
-  - 1001 : Li Turbo
+  - 1001 : Li Turbo 
   - 1010 : JMP
   - 1011 : MOVE 
   - 1100 : MulMatrix4x4
@@ -73,6 +76,8 @@ Projeto requer Logisim Evolution para ser executado.
   - 1110 : SW
   - 1111 : LW
 
+### Multiplicação de Matrizes
+O processador utiliza uma instrução especifica para ler diretamente 32 bits ![8](photos/8.png)
 
 ### Contribuições
  Thiago 100%
