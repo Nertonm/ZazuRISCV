@@ -13,8 +13,12 @@ Este README fornece informações sobre a atribuição, como configurar e execut
 - [Licença](#licença)
 
 ### Main
+#### Visão Geral do Processador
 ![1](photos/1.png)
+Foto do processador com todos os componentes 
+#### Estrutura do Contandor de Endereço e Jump
 ![2](photos/2.png)
+
 ![3](photos/3.png)
 
 ### ULA
