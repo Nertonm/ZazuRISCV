@@ -77,7 +77,7 @@ Projeto requer Logisim Evolution para ser executado.
   - 1111 : LW
 
 ### Multiplicação de Matrizes
-O processador utiliza uma instrução especifica (Li Turbo) para lerdiretamente 32 bits da memoria e alocar no a0, depois esse valor e movido para a um registrador onde ocorrera a multiplicação de matrizes que serão guardades na memoria ram
+O processador utiliza uma instrução específica (Li Turbo) para ler diretamente 32 bits da memória e alocá-los no a0. Posteriormente, esse valor é movido para um registrador onde ocorre a multiplicação de matrizes, que são então armazenadas na memória RAM.
 
 #### Alterações no processador para suportar inserção de 32 bits
 ![8](photos/8.png)
