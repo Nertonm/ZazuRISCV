@@ -54,7 +54,6 @@ Projeto requer Logisim Evolution para ser executado.
    V0 = Reg$3
    
    Escreve Um - Lê Dois
-   
    Ordem    OP RD RT RS
    Manipulação de Endereço sempre por RD
    
